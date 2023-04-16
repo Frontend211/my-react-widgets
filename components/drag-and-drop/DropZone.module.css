@@ -1,0 +1,8 @@
+.drag-over {
+  background-color: yellow;
+  outline: 3px solid lightblue;
+  
+}
+.drop-zone {
+  width: fit-content;
+}

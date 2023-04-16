@@ -39,7 +39,7 @@ function Week({ start, max, selected }) {
   return <tr>
     {[...Array(7)].map((_, index) => +start + index).map(day =>
       <td key={day} className={+selected === day ? styles.selected : ''}>
-        {day > 0 && day <= max && day}
+        {day >=1 && day <= max && day}
       </td>)}
   </tr>;
 }
