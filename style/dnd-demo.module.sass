@@ -1,33 +1,19 @@
-main
-  // display: grid
-  // grid: 1fr /repeat(auto-fit, minmax(200px,1fr))
-  gap: 1em
-  display: flex
-  flex-wrap: wrap
-  // justify-items: center
-
-  section 
-    border: 1px solid grey
-    flex-grow: 1
-    border-radius: 1em
-    padding: 1em
-
-    h2
-      margin-top: 0
-
-.flex 
+.container
   display: flex
 
+.container > *
+  flex-basis: 0
+  flex-grow: 1
+
+  
 .trash
+  aspect-ratio: 1
   background-image: url(https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f5d1.png)
-  width: 100px
-  height: 100px
   background-size: contain
 
 .square
-  width: 150px
-  box-shadow: inset 0 0 12px 4px gray
   aspect-ratio: 1
+  box-shadow: inset 0 0 12px 4px gray
   display: flex
   justify-content: center
   align-items: center

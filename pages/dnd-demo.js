@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import Draggable from '../components/drag-and-drop/Draggable';
 import DropZone from '../components/drag-and-drop/DropZone';
+import styles from '../style/dnd-demo.module.sass';
 
 function newElemId() {
   return Math.random;
@@ -12,7 +13,7 @@ export default function DNDDemoPage() {
       [11, 22, 33]
         .map(n => ({
           id: n,
-          component: <Draggable  id={n} key={n}><div key={n} className="round">{n}</div></Draggable>,
+          component: <Draggable id={n} key={n}><div key={n} className={styles.round}>{n}</div></Draggable>,
           parentId: 0
         })
         )),
@@ -37,16 +38,20 @@ export default function DNDDemoPage() {
 
 
 
-  return <div className='flex'>
-    {[0, 1, 2, 3].map(i =>
-      <DropZone key={i} dropZoneId={i} onDrop={onDrop} ><div className="square">{draggableSet.filter(x => i === x.parentId).map(el => el.component)}</div></DropZone>
-    )}
-    {/* <DropZone dropZoneId="0" onDrop={onDrop} ><div className="square">{draggableSet.filter(x => 0 === x.parentId).map(el => el.component)}</div></DropZone>
+  return <div>
+    <h1>Draggable and DropZone usage demo</h1>
+
+    <div className={styles.container}>
+      {[0, 1, 2, 3].map(i =>
+        <DropZone key={i} dropZoneId={i} onDrop={onDrop} ><div className={styles.square}>{draggableSet.filter(x => i === x.parentId).map(el => el.component)}</div></DropZone>
+      )}
+      {/* <DropZone dropZoneId="0" onDrop={onDrop} ><div className="square">{draggableSet.filter(x => 0 === x.parentId).map(el => el.component)}</div></DropZone>
     <DropZone dropZoneId="1" onDrop={onDrop} ><div className="square">{draggableSet.filter(x => 1 === x.parentId).map(el => el.component)}</div></DropZone> */}
 
-    <DropZone dropZoneId="trash"
-      {...{} /* onDrop={(_, elId)=>setDraggableSet(draggableSet.filter(el => +elId !== +el.id)) } */}
-      onDrop={onDrop}
-    ><div className="trash"></div></DropZone>
+      <DropZone dropZoneId="trash"
+        {...{} /* onDrop={(_, elId)=>setDraggableSet(draggableSet.filter(el => +elId !== +el.id)) } */}
+        onDrop={onDrop}
+      ><div className={styles.trash}></div></DropZone>
+    </div>
   </div>;
 }
